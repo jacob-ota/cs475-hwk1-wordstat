@@ -11,6 +11,12 @@
 WordStats initStats(WordStats st)
 {
 	// TODO initialize all fields in the st struct before returning it
+	for (int i = 0; i < ALPHABET_SIZE; ++i) {
+		st.histo[i] = 0;
+	}
+	st.wordCount = 0;
+	st.vowelCount = 0;
+	st.consonantCount = 0;
 	return st;
 }
 
@@ -46,6 +52,9 @@ WordStats updateWordCount(WordStats st, const char str[])
 void printVowelConsFreq(WordStats st)
 {
 	// TODO: print vowel and consonant frequency
+	printf("Vowels: v (percent), ");
+	printf("Consonants: c (percent), ");
+	printf("Total: t");
 }
 
 /**
