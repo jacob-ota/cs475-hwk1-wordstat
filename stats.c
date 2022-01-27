@@ -30,6 +30,29 @@ WordStats updateVowelCons(WordStats st, const char str[])
 {
 	// TODO - update the vowel and consonant count
 	//        in the st struct before returning it
+	for (int i = 0; i < strlen(str); ++i) {
+		if((str[i] >= 'A' && str[i] <= 'Z') || (str[i] >= 'a' && str[i] <= 'z')) {
+			if(str[i] == 'A' || str[i] == 'a') {
+				st.vowelCount++;
+			}
+			else if(str[i] == 'E' || str[i] == 'e') {
+				st.vowelCount++;
+			}
+			else if(str[i] == 'I' || str[i] == 'i') {
+				st.vowelCount++;
+			}
+			else if(str[i] == 'O' || str[i] == 'o') {
+				st.vowelCount++;
+			}
+			else if(str[i] == 'U' || str[i] == 'u') {
+				st.vowelCount++;
+			}
+			else {
+				st.consonantCount++;
+			}
+		}
+		
+	}
 	return st;
 }
 
@@ -51,10 +74,13 @@ WordStats updateWordCount(WordStats st, const char str[])
  */
 void printVowelConsFreq(WordStats st)
 {
+	int total = st.consonantCount + st.vowelCount;
+	double vowelPercent = ((double) st.vowelCount / (double) total) * 100;
+	double conPercent = ((double) st.consonantCount / (double) total) * 100;
 	// TODO: print vowel and consonant frequency
-	printf("Vowels: v (percent), ");
-	printf("Consonants: c (percent), ");
-	printf("Total: t");
+	printf("Vowels: %d (%.2lf%%), ", st.vowelCount, vowelPercent);
+	printf("Consonants: %d (%.2lf%%), ", st.consonantCount, conPercent);
+	printf("Total: %d\n", total);
 }
 
 /**

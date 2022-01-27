@@ -19,10 +19,12 @@ int main(int argc, char **argv)
 	WordStats stats;
 	bool notHashtag = true;
 	bool isFinished = false;
+	stats = initStats(stats);
 	//get userinput until they enter a '#'
 	printf("Enter strings (Enter # to stop)\n");
 	while(notHashtag) {
 		scanf("%s", input);
+		stats = updateVowelCons(stats, input);
 		//add the updates here
 		if(strcmp(input, hashtag) == 0) {
 			notHashtag = false;
@@ -30,28 +32,30 @@ int main(int argc, char **argv)
 	}
 	//start up the menu unless an exit is called
 	while(!isFinished) {
-		stats = initStats(stats);
 		printf("\n");
 		// TODO: repeatedly print menu options and prompt for an option
 		int check = getMenuOption();
 		if(check == MENU_VC) {
-			printf("%d\n", stats.vowelCount);
+			printVowelConsFreq(stats);
 		}
 		else if(check == MENU_WC) {
 			printf("This is option 2!\n");
 		}
 		else if(check == MENU_HISTO) {
-			printf("This is option 3!\n");
+			for (int i = 0; i < ALPHABET_SIZE; ++i) {
+				printf("%d", stats.histo[i]);
+			}
 		}
 		else if(check == MENU_RET) {
 			notHashtag = true;
 			printf("Enter strings (Enter # to stop)\n");
 			while(notHashtag) {
-			scanf("%s", input);
-			if(strcmp(input, hashtag) == 0) {
-				notHashtag = false;
-			}
-		}
+				scanf("%s", input);
+				stats = updateVowelCons(stats, input);
+				if(strcmp(input, hashtag) == 0) {
+					notHashtag = false;
+				}
+			}	
 		}
 		else if(check == MENU_EXIT) {
 			isFinished = true;
