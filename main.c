@@ -24,8 +24,10 @@ int main(int argc, char **argv)
 	printf("Enter strings (Enter # to stop)\n");
 	while(notHashtag) {
 		scanf("%s", input);
+		//update the stats
 		stats = updateVowelCons(stats, input);
-		//add the updates here
+		stats = updateWordCount(stats, input);
+		//end on a hashtag
 		if(strcmp(input, hashtag) == 0) {
 			notHashtag = false;
 		}
@@ -35,18 +37,19 @@ int main(int argc, char **argv)
 		printf("\n");
 		// TODO: repeatedly print menu options and prompt for an option
 		int check = getMenuOption();
-		if(check == MENU_VC) {
+		//check the menu input and print out the correct stats for that input
+		if(check == MENU_VC) { //#1
 			printVowelConsFreq(stats);
 		}
-		else if(check == MENU_WC) {
-			printf("This is option 2!\n");
+		else if(check == MENU_WC) { //#2
+			printWordCount(stats);
 		}
-		else if(check == MENU_HISTO) {
+		else if(check == MENU_HISTO) { //#3
 			for (int i = 0; i < ALPHABET_SIZE; ++i) {
 				printf("%d", stats.histo[i]);
 			}
 		}
-		else if(check == MENU_RET) {
+		else if(check == MENU_RET) { //#4
 			notHashtag = true;
 			printf("Enter strings (Enter # to stop)\n");
 			while(notHashtag) {
@@ -57,10 +60,10 @@ int main(int argc, char **argv)
 				}
 			}	
 		}
-		else if(check == MENU_EXIT) {
+		else if(check == MENU_EXIT) { //#5
 			isFinished = true;
 		}
-		else {
+		else { //if the user puts a bad input
 			printf("Error: Unknown option %d. Try again!\n", check);
 		}
 	}
