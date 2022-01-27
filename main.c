@@ -30,6 +30,7 @@ int main(int argc, char **argv)
 		while(space != NULL) {
 			stats = updateVowelCons(stats, input);
 			stats = updateWordCount(stats, input);
+			updateHistogram(stats.histo, input);
 			space = strtok(NULL, " ");
 		}
 		//end on a hashtag
@@ -50,9 +51,7 @@ int main(int argc, char **argv)
 			printWordCount(stats);
 		}
 		else if(check == MENU_HISTO) { //#3
-			for (int i = 0; i < ALPHABET_SIZE; ++i) {
-				printf("%d", stats.histo[i]);
-			}
+			printHistogram(stats);
 		}
 		else if(check == MENU_RET) { //#4
 			notHashtag = true;
@@ -63,6 +62,7 @@ int main(int argc, char **argv)
 				while(space != NULL) {
 					stats = updateVowelCons(stats, input);
 					stats = updateWordCount(stats, input);
+					updateHistogram(stats.histo, input);
 					space = strtok(NULL, " ");
 				}
 				if(strcmp(input, hashtag) == 0) {

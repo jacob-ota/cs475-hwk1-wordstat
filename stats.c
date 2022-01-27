@@ -109,6 +109,15 @@ void printWordCount(WordStats st)
 void printHistogram(WordStats st)
 {
 	// TODO: Prints vertical histogram
+	char alphabet[ALPHABET_SIZE] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
+	for (int i = 0; i < ALPHABET_SIZE; ++i) {
+		printf("%c ", alphabet[i]);
+	}
+	printf("\n");
+	for (int i = 0; i < ALPHABET_SIZE; ++i) {
+		printf("%d ", st.histo[i]);
+	}
+	printf("\n");
 }
 
 /**
@@ -119,4 +128,86 @@ void printHistogram(WordStats st)
 void updateHistogram(int histo[], const char str[])
 {
 	// TODO: updates the frequencies in the histogram, given the letters in the input string
+	for (int i = 0; i < strlen(str); ++i) {
+		if((str[i] >= 'A' && str[i] <= 'Z') || (str[i] >= 'a' && str[i] <= 'z')) {
+			if(str[i] == 'A' || str[i] == 'a') {
+				histo[0] = histo[0] + 1;
+			}
+			else if(str[i] == 'B' || str[i] == 'b') {
+				histo[1] = histo[1] + 1;
+			}
+			else if(str[i] == 'C' || str[i] == 'c') {
+				histo[2] = histo[2] + 1;
+			}
+			else if(str[i] == 'D' || str[i] == 'd') {
+				histo[3] = histo[3] + 1;
+			}
+			else if(str[i] == 'E' || str[i] == 'e') {
+				histo[4] = histo[4] + 1;
+			}
+			else if(str[i] == 'F' || str[i] == 'f') {
+				histo[5] = histo[5] + 1;
+			}
+			else if(str[i] == 'G' || str[i] == 'g') {
+				histo[6] = histo[6] + 1;
+			}
+			else if(str[i] == 'H' || str[i] == 'h') {
+				histo[7] = histo[7] + 1;
+			}
+			else if(str[i] == 'I' || str[i] == 'i') {
+				histo[8] = histo[8] + 1;
+			}
+			else if(str[i] == 'J' || str[i] == 'j') {
+				histo[9] = histo[9] + 1;
+			}
+			else if(str[i] == 'K' || str[i] == 'k') {
+				histo[10] = histo[10] + 1;
+			}
+			else if(str[i] == 'L' || str[i] == 'l') {
+				histo[11] = histo[11] + 1;
+			}
+			else if(str[i] == 'M' || str[i] == 'm') {
+				histo[12] = histo[12] + 1;
+			}
+			else if(str[i] == 'N' || str[i] == 'n') {
+				histo[13] = histo[13] + 1;
+			}
+			else if(str[i] == 'O' || str[i] == 'o') {
+				histo[14] = histo[14] + 1;
+			}
+			else if(str[i] == 'P' || str[i] == 'p') {
+				histo[15] = histo[15] + 1;
+			}
+			else if(str[i] == 'Q' || str[i] == 'q') {
+				histo[16] = histo[16] + 1;
+			}
+			else if(str[i] == 'R' || str[i] == 'r') {
+				histo[17] = histo[17] + 1;
+			}
+			else if(str[i] == 'S' || str[i] == 's') {
+				histo[18] = histo[18] + 1;
+			}
+			else if(str[i] == 'T' || str[i] == 't') {
+				histo[19] = histo[19] + 1;
+			}
+			else if(str[i] == 'U' || str[i] == 'u') {
+				histo[20] = histo[20] + 1;
+			}
+			else if(str[i] == 'V' || str[i] == 'v') {
+				histo[21] = histo[21] + 1;
+			}
+			else if(str[i] == 'W' || str[i] == 'w') {
+				histo[22] = histo[22] + 1;
+			}
+			else if(str[i] == 'X' || str[i] == 'x') {
+				histo[23] = histo[23] + 1;
+			}
+			else if(str[i] == 'Y' || str[i] == 'y') {
+				histo[24] = histo[24] + 1;
+			}
+			else {
+				histo[25] = histo[25] + 1;
+			}
+		}
+	}
 }
