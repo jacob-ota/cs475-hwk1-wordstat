@@ -16,6 +16,7 @@ int main(int argc, char **argv)
 {
 	char input[MAX_INPUT_LEN]; //holds user-input string
 	char hashtag[MAX_INPUT_LEN] = "#";
+	char *space;
 	WordStats stats;
 	bool notHashtag = true;
 	bool isFinished = false;
@@ -24,9 +25,13 @@ int main(int argc, char **argv)
 	printf("Enter strings (Enter # to stop)\n");
 	while(notHashtag) {
 		scanf("%s", input);
-		//update the stats
-		stats = updateVowelCons(stats, input);
-		stats = updateWordCount(stats, input);
+		//update the stats and delimit spaces
+		space = strtok(input, " ");
+		while(space != NULL) {
+			stats = updateVowelCons(stats, input);
+			stats = updateWordCount(stats, input);
+			space = strtok(NULL, " ");
+		}
 		//end on a hashtag
 		if(strcmp(input, hashtag) == 0) {
 			notHashtag = false;
@@ -54,7 +59,12 @@ int main(int argc, char **argv)
 			printf("Enter strings (Enter # to stop)\n");
 			while(notHashtag) {
 				scanf("%s", input);
-				stats = updateVowelCons(stats, input);
+				space = strtok(input, " ");
+				while(space != NULL) {
+					stats = updateVowelCons(stats, input);
+					stats = updateWordCount(stats, input);
+					space = strtok(NULL, " ");
+				}
 				if(strcmp(input, hashtag) == 0) {
 					notHashtag = false;
 				}

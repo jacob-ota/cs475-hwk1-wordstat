@@ -99,7 +99,7 @@ void printVowelConsFreq(WordStats st)
 void printWordCount(WordStats st)
 {
 	// TODO: prints word count
-	printf("Words: %d", st.wordCount);
+	printf("Words: %d\n", st.wordCount);
 }
 
 /**
