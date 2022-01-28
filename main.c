@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-#include <stdbool.h> 
+#include <stdbool.h>
 #include "stats.h"
 #include "menu.h"
 
@@ -23,57 +23,70 @@ int main(int argc, char **argv)
 	stats = initStats(stats);
 	//get userinput until they enter a '#'
 	printf("Enter strings (Enter # to stop)\n");
-	while(notHashtag) {
+	while (notHashtag)
+	{
 		scanf("%s", input);
 		//update the stats and delimit spaces
 		space = strtok(input, " ");
-		while(space != NULL) {
+		while (space != NULL)
+		{
 			stats = updateVowelCons(stats, input);
 			stats = updateWordCount(stats, input);
 			updateHistogram(stats.histo, input);
 			space = strtok(NULL, " ");
 		}
 		//end on a hashtag
-		if(strcmp(input, hashtag) == 0) {
+		if (strcmp(input, hashtag) == 0)
+		{
 			notHashtag = false;
 		}
 	}
 	//start up the menu unless an exit is called
-	while(!isFinished) {
+	while (!isFinished)
+	{
 		printf("\n");
 		// TODO: repeatedly print menu options and prompt for an option
 		int check = getMenuOption();
 		//check the menu input and print out the correct stats for that input
-		if(check == MENU_VC) { //#1
+		if (check == MENU_VC)
+		{ //#1
 			printVowelConsFreq(stats);
 		}
-		else if(check == MENU_WC) { //#2
+		else if (check == MENU_WC)
+		{ //#2
 			printWordCount(stats);
 		}
-		else if(check == MENU_HISTO) { //#3
+		else if (check == MENU_HISTO)
+		{ //#3
 			printHistogram(stats);
 		}
-		else if(check == MENU_RET) { //#4
+		else if (check == MENU_RET)
+		{ //#4
 			notHashtag = true;
 			printf("Enter strings (Enter # to stop)\n");
-			while(notHashtag) {
+			while (notHashtag)
+			{
 				scanf("%s", input);
 				space = strtok(input, " ");
-				while(space != NULL) {
+				while (space != NULL)
+				{
 					stats = updateVowelCons(stats, input);
 					stats = updateWordCount(stats, input);
 					updateHistogram(stats.histo, input);
 					space = strtok(NULL, " ");
 				}
-				if(strcmp(input, hashtag) == 0) {
+				if (strcmp(input, hashtag) == 0)
+				{
 					notHashtag = false;
 				}
-			}	
+			}
 		}
-		else if(check == MENU_EXIT) { //#5
+		else if (check == MENU_EXIT)
+		{ //#5
 			isFinished = true;
 		}
-		else { //if the user puts a bad input
+		else
+		{ //if the user puts a bad input
 			printf("Error: Unknown option %d. Try again!\n", check);
 		}
 	}
